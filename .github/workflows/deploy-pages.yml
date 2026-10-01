@@ -1,0 +1,65 @@
+name: Deploy to GitHub Pages
+
+# SankeyMATIC is plain static files, so there is nothing to compile: this job
+# just hands build/ to Pages. build/ becomes the site ROOT, so the diagram
+# builder is served at the top of the site rather than under /build/.
+
+on:
+  push:
+    branches: [main]
+  # Deploy any other ref on demand. Useful for previewing a feature branch
+  # without having to add this file to it -- a push event only ever triggers
+  # workflows that exist on the branch being pushed.
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Branch, tag or SHA to deploy'
+        required: false
+        default: main
+
+# The minimum the deploy-pages action needs to publish.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Queue deployments rather than cancelling them, so a run that is already
+# waiting still gets published instead of being dropped.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.ref || github.ref }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # The hotkey tests need nothing installed, so this costs a couple of
+      # seconds and stops a broken commit from being published. Skipped on refs
+      # which predate the tests, so that deploying main still works.
+      - name: Run tests, if this ref has any
+        run: |
+          if [ -d test ]; then
+            node --test test/
+          else
+            echo 'No test/ directory on this ref -- skipping.'
+          fi
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
