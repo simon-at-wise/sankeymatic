@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1">
+<title>SankeyMATIC Manual: Editor Hotkeys</title>
+<link rel="stylesheet" href="../../build.css">
+<meta name="description" content="Keyboard shortcuts for editing the Diagram Inputs in this fork of SankeyMATIC." />
+<style>
+.hotkeys { max-width: 46em; margin: 0 auto; font-size: medium; line-height: 1.4; }
+.hotkeys table { border-collapse: collapse; margin: 1em 0; }
+.hotkeys th, .hotkeys td { border-bottom: var(--border-light); padding: 0.4em 0.8em; text-align: left; vertical-align: top; }
+.hotkeys td:first-child { white-space: nowrap; }
+.hotkeys kbd { font-family: monospace; padding: 0 0.3em; border: var(--border-gray); border-radius: 3px; background-color: var(--bg-plain-secondary); white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="attention-bar" role="note">This is a fork of SankeyMATIC with added editor hotkeys. The original version is at <a href="https://sankeymatic.com/" title="(new window) The original SankeyMATIC" target="_blank" rel="noopener">sankeymatic.com</a>.</div>
+<header class="header vs f-middle">
+  <nav class="header__nav hs-sm-vs space-between">
+  <a href="../../" title="Back to the diagram builder" class="header__logo hs f-middle align-center"><img alt="SankeyMATIC logo" src="../../i/SKM-trsp-300.png" height="27" width="27" class="skm_logo_small" />&nbsp;SankeyMATIC</a>
+  <ul class="header__links hs f-middle">
+    <li><a href="../../" title="Back to the diagram builder">Build a Diagram</a></li>
+    <li><a href="https://sankeymatic.com/manual/" title="(new window) The full SankeyMATIC manual" target="_blank" rel="noopener">Full Manual</a></li>
+  </ul>
+  </nav>
+</header>
+
+<main class="hotkeys">
+<h1>Editor Hotkeys</h1>
+
+<p>These shortcuts work while you are typing in the <strong>Inputs</strong> box of the <a href="../../">diagram builder</a>. Each one acts on the line the cursor is on, or on every line touched by the current selection.</p>
+
+<table>
+<thead>
+<tr><th scope="col">Keys</th><th scope="col">What it does</th></tr>
+</thead>
+<tbody>
+<tr><td><kbd>Ctrl</kbd> + <kbd>/</kbd></td><td>Comment out the line(s) with <code>//</code>, or uncomment them if they are already comments.</td></tr>
+<tr><td><kbd>Alt</kbd> + <kbd>↑</kbd> / <kbd>↓</kbd></td><td>Move the line(s) up or down.</td></tr>
+<tr><td><kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↑</kbd> / <kbd>↓</kbd></td><td>Duplicate the line(s) above or below.</td></tr>
+<tr><td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>K</kbd></td><td>Delete the line(s).</td></tr>
+<tr><td><kbd>Ctrl</kbd> + <kbd>C</kbd></td><td>With nothing selected: copy the whole current line.</td></tr>
+<tr><td><kbd>Ctrl</kbd> + <kbd>X</kbd></td><td>With nothing selected: cut the whole current line.</td></tr>
+</tbody>
+</table>
+
+<h2>Good to know</h2>
+<ul>
+<li><strong>Ctrl or Cmd:</strong> On a Mac, <kbd>Cmd</kbd> works anywhere <kbd>Ctrl</kbd> is listed, and <kbd>Alt</kbd> is the <kbd>Option</kbd> key.</li>
+<li><strong>Undo:</strong> Every shortcut can be reversed in one step with <kbd>Ctrl</kbd> + <kbd>Z</kbd>.</li>
+<li><strong>Copy &amp; cut:</strong> When you have text selected, <kbd>Ctrl</kbd> + <kbd>C</kbd> and <kbd>Ctrl</kbd> + <kbd>X</kbd> behave exactly as they normally do.</li>
+<li><strong>Comments:</strong> Lines starting with <code>'</code> also count as comments, so uncommenting removes either marker.</li>
+</ul>
+</main>
+</body>
+</html>
